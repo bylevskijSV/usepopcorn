@@ -1,6 +1,13 @@
+import { useState } from "react";
+
 import { NavBar } from "./NavBar";
 import { Main } from "./Main";
-import { useState } from "react";
+import { Search } from "./Search";
+import { NumResults } from "./NumResults";
+import { Box } from "./Box";
+import { MovieList } from "./MovieList";
+import { WatchedSummary } from "./WatchedSummary";
+import { WatchedMovieList } from "./WatchedMovieList";
 
 export const tempMovieData = [
   {
@@ -51,11 +58,25 @@ export const tempWatchedData = [
 
 export default function App() {
   const [movies, setMovies] = useState(tempMovieData);
+  const [watched, setWatched] = useState(tempWatchedData);
 
   return (
     <>
-      <NavBar movies={movies} />
-      <Main movies={movies} />
+      <NavBar>
+        <Search />
+        <NumResults movies={movies} />
+      </NavBar>
+
+      <Main>
+        <Box>
+          <MovieList movies={movies} />
+        </Box>
+
+        <Box>
+          <WatchedSummary watched={watched} />
+          <WatchedMovieList watched={watched} />
+        </Box>
+      </Main>
     </>
   );
 }
