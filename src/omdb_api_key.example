@@ -1,0 +1,2 @@
+// rename omdb_api_key.example to omdb_api_key.js
+export const OMDB_API_KEY = "YOUR API KEY";
